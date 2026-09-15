@@ -55,9 +55,3 @@
     </td>
   </tr>
 </table>
-![Скриншот главной страницы](screenshots/main.png)
-![Скриншот квеста 1](screenshots/quest1.png)
-![Скриншот квеста 2](screenshots/quest2.png)
-![Скриншот игры](screenshots/clicker.png)
-![Скриншот рецептов](screenshots/kitchen.png)
-![Скриншот рецепта](screenshots/recipe.png)
