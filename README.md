@@ -17,4 +17,9 @@
 2. Откройте файл `index.html` в браузере.
 
 ## 📸 Скриншоты
-(Сюда можно вставить картинки, если зальете их в репозиторий)
+![Скриншот главной страницы](screenshots/main.png)
+![Скриншот квеста 1](screenshots/quest1.png)
+![Скриншот квеста 2](screenshots/quest2.png)
+![Скриншот игры](screenshots/clicker.png)
+![Скриншот рецептов](screenshots/kitchen.png)
+![Скриншот рецепта](screenshots/recipe.png)
