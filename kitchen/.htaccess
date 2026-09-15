@@ -1,0 +1,10 @@
+# Защита файлов данных от прямого доступа (Apache 2.2/2.4 и LiteSpeed)
+<FilesMatch "^(kitchen_data\.json|kitchen_tokens\.json|.*\.tmp)$">
+  Order allow,deny
+  Deny from all
+  Satisfy all
+  # Apache 2.4+
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+</FilesMatch>

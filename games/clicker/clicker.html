@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="author" content="AcidKil!" />
+    <meta name="theme-color" content="#6fb8df" />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <title>Кликер</title>
+    <link rel="icon" href="./clicker.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css" />
+</head>
+
+  <body>
+    <div class="body-game">
+      <header class="top-bar">
+          <a href="../../launcher.html" class="top-button" style="font-size: 18px;" 
+                    onmouseover="this.style.color='#4d9ec9'; this.style.transform='translateX(-2px)';"
+                    onmouseout="this.style.color='#6fb8df'; this.style.transform='translateX(0)';">
+              ← К играм
+          </a>
+          <button id="resetGameBtn" class="top-button"
+                    onmouseover="this.style.color='#4d9ec9'; this.style.transform='translateX(-2px)';"
+                    onmouseout="this.style.color='#6fb8df'; this.style.transform='translateX(0)';">
+              🔄 СБРОС
+            </button>
+                    <button id="muteButton" class="mute-button"
+                  title="Выключить звук"
+                  onmouseover="this.style.color='#4d9ec9';"
+                  onmouseout="this.style.color='#6fb8df';">
+            🔊
+          </button>
+                  <label class="theme-switch" style="--toggle-size: 7px; margin: 4px;">
+  <input type="checkbox" class="theme-switch__checkbox" id="theme-switch">
+  <div class="theme-switch__container">
+    <div class="theme-switch__clouds"></div>
+    <div class="theme-switch__stars-container">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 55" fill="none">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M135.831 3.00688C135.055 3.85027 134.111 4.29946 133 4.35447C134.111 4.40947 135.055 4.85867 135.831 5.71123C136.607 6.55462 136.996 7.56303 136.996 8.72727C136.996 7.95722 137.172 7.25134 137.525 6.59129C137.886 5.93124 138.372 5.39954 138.98 5.00535C139.598 4.60199 140.268 4.39114 141 4.35447C139.88 4.2903 138.936 3.85027 138.16 3.00688C137.384 2.16348 136.996 1.16425 136.996 0C136.996 1.16425 136.607 2.16348 135.831 3.00688ZM31 23.3545C32.1114 23.2995 33.0551 22.8503 33.8313 22.0069C34.6075 21.1635 34.9956 20.1642 34.9956 19C34.9956 20.1642 35.3837 21.1635 36.1599 22.0069C36.9361 22.8503 37.8798 23.2903 39 23.3545C38.2679 23.3911 37.5976 23.602 36.9802 24.0053C36.3716 24.3995 35.8864 24.9312 35.5248 25.5913C35.172 26.2513 34.9956 26.9572 34.9956 27.7273C34.9956 26.563 34.6075 25.5546 33.8313 24.7112C33.0551 23.8587 32.1114 23.4095 31 23.3545ZM0 36.3545C1.11136 36.2995 2.05513 35.8503 2.83131 35.0069C3.6075 34.1635 3.99559 33.1642 3.99559 32C3.99559 33.1642 4.38368 34.1635 5.15987 35.0069C5.93605 35.8503 6.87982 36.2903 8 36.3545C7.26792 36.3911 6.59757 36.602 5.98015 37.0053C5.37155 37.3995 4.88644 37.9312 4.52481 38.5913C4.172 39.2513 3.99559 39.9572 3.99559 40.7273C3.99559 39.563 3.6075 38.5546 2.83131 37.7112C2.05513 36.8587 1.11136 36.4095 0 36.3545ZM56.8313 24.0069C56.0551 24.8503 55.1114 25.2995 54 25.3545C55.1114 25.4095 56.0551 25.8587 56.8313 26.7112C57.6075 27.5546 57.9956 28.563 57.9956 29.7273C57.9956 28.9572 58.172 28.2513 58.5248 27.5913C58.8864 26.9312 59.3716 26.3995 59.9802 26.0053C60.5976 25.602 61.2679 25.3911 62 25.3545C60.8798 25.2903 59.9361 24.8503 59.1599 24.0069C58.3837 23.1635 57.9956 22.1642 57.9956 21C57.9956 22.1642 57.6075 23.1635 56.8313 24.0069ZM81 25.3545C82.1114 25.2995 83.0551 24.8503 83.8313 24.0069C84.6075 23.1635 84.9956 22.1642 84.9956 21C84.9956 22.1642 85.3837 23.1635 86.1599 24.0069C86.9361 24.8503 87.8798 25.2903 89 25.3545C88.2679 25.3911 87.5976 25.602 86.9802 26.0053C86.3716 26.3995 85.8864 26.9312 85.5248 27.5913C85.172 28.2513 84.9956 28.9572 84.9956 29.7273C84.9956 28.563 84.6075 27.5546 83.8313 26.7112C83.0551 25.8587 82.1114 25.4095 81 25.3545ZM136 36.3545C137.111 36.2995 138.055 35.8503 138.831 35.0069C139.607 34.1635 139.996 33.1642 139.996 32C139.996 33.1642 140.384 34.1635 141.16 35.0069C141.936 35.8503 142.88 36.2903 144 36.3545C143.268 36.3911 142.598 36.602 141.98 37.0053C141.372 37.3995 140.886 37.9312 140.525 38.5913C140.172 39.2513 139.996 39.9572 139.996 40.7273C139.996 39.563 139.607 38.5546 138.831 37.7112C138.055 36.8587 137.111 36.4095 136 36.3545ZM101.831 49.0069C101.055 49.8503 100.111 50.2995 99 50.3545C100.111 50.4095 101.055 50.8587 101.831 51.7112C102.607 52.5546 102.996 53.563 102.996 54.7273C102.996 53.9572 103.172 53.2513 103.525 52.5913C103.886 51.9312 104.372 51.3995 104.98 51.0053C105.598 50.602 106.268 50.3911 107 50.3545C105.88 50.2903 104.936 49.8503 104.16 49.0069C103.384 48.1635 102.996 47.1642 102.996 46C102.996 47.1642 102.607 48.1635 101.831 49.0069Z" fill="currentColor"></path>
+      </svg>
+    </div>
+    <div class="theme-switch__circle-container">
+      <div class="theme-switch__sun-moon-container">
+        <div class="theme-switch__moon">
+          <div class="theme-switch__spot"></div>
+          <div class="theme-switch__spot"></div>
+          <div class="theme-switch__spot"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</label>
+
+</header>
+<main class="game-container">
+
+      <!-- Блок 2: Левая панель (Клики) -->
+    <aside class="left-panel">
+        <h2>🛒 МАГАЗИН <br> <str class="mobile-score" style="font-weight: bold;">Мяу: <span id="moneyMobileCenter">0</span></str></h2>
+    <button class="shop-button" onclick="upgradeMPC()">
+      <img src="upg1.png" alt="Upgrade 1">
+      <div>
+      <str class="upg-name">Мышь</str>
+      <progress id="progress-upg1" max="100" value="0"></progress>
+      <div style="display: grid; justify-content: space-between; grid-template-columns: 1fr 1fr;">
+        <div style="display: flex; flex-direction: column;">
+        <str class="upg-cost"><span id="mpcCost">10</span> Мяу</str>
+        <str class="upg-desc">+1 Мяу/клик</str>
+        </div>
+        <str class="upg-total-bonus" id="mpcTotalBonus">+0 Мяу</str>
+      </div>
+      </div>
+    <span class="shop-button-count" id="mpcCount">0</span>
+    </button>
+
+    <button class="shop-button" onclick="buyMPS()">
+      <img src="upg2.png" alt="Upgrade 2">
+      <div>
+      <str class="upg-name">Шарик</str>
+      <progress id="progress-upg2" max="100" value="0"></progress>
+      <div style="display: grid; justify-content: space-between; grid-template-columns: 1fr 1fr;">
+        <div style="display: flex; flex-direction: column;">
+        <str class="upg-cost"><span id="mpsCost">50</span> Мяу</str>
+        <str class="upg-desc">+1 Мяу/сек</str>
+        </div>
+        <str class="upg-total-bonus" id="mpsTotalBonus">+0 Мяу/сек</str>
+      </div>
+      </div>
+    <span class="shop-button-count" id="mpsCount">0</span>
+    </button>
+
+    <button class="shop-button" onclick="buyUpgrade1()">
+      <img src="upg3.png" alt="Upgrade 3">
+      <div>
+      <str class="upg-name">Корм</str>
+      <progress id="progress-upg3" max="100" value="0"></progress>
+      <div style="display: grid; justify-content: space-between; grid-template-columns: 1fr 1fr;">
+        <div style="display: flex; flex-direction: column;">
+        <str class="upg-cost"><span id="upgrade1Cost">200</span> Мяу</str>
+        <str class="upg-desc">+5 Мяу/сек</str>
+        </div>
+        <str class="upg-total-bonus" id="upgrade1TotalBonus">+0 Мяу/сек</str>
+      </div>
+      </div>
+    <span class="shop-button-count" id="upgrade1Count">0</span>
+    </button>
+
+    <button class="shop-button" onclick="buyUpgrade2()">
+      <img src="upg4.png" alt="Upgrade 4">
+      <div>
+      <str class="upg-name">Дразнилка</str>
+      <progress id="progress-upg4" max="100" value="0"></progress>
+      <div style="display: grid; justify-content: space-between; grid-template-columns: 1fr 1fr;">
+        <div style="display: flex; flex-direction: column;">
+        <str class="upg-cost"><span id="upgrade2Cost">1000</span> Мяу</str>
+        <str class="upg-desc">+25 Мяу/сек</str>
+        </div>
+        <str class="upg-total-bonus" id="upgrade2TotalBonus">+0 Мяу/сек</str>
+      </div>
+      </div>
+    <span class="shop-button-count" id="upgrade2Count">0</span>
+    </button>
+
+    <button class="shop-button" onclick="buyUpgrade3()">
+      <img src="upg5.png" alt="Upgrade 5">
+      <div>
+      <str class="upg-name">Кошачья мята</str>
+      <progress id="progress-upg5" max="100" value="0"></progress>
+      <div style="display: grid; justify-content: space-between; grid-template-columns: 1fr 1fr;">
+        <div style="display: flex; flex-direction: column;">
+        <str class="upg-cost"><span id="upgrade3Cost">5000</span> Мяу</str>
+        <str class="upg-desc">+100 Мяу/сек</str>
+        </div>
+        <str class="upg-total-bonus" id="upgrade3TotalBonus">+0 Мяу/сек</str>
+      </div>
+      </div>
+    <span class="shop-button-count" id="upgrade3Count">0</span>
+    </button>
+    </aside>
+
+    <!-- Блок 3: Центр (Кошка и счет) -->
+    <section class="center-panel">
+      <div class="stats">
+        <str style="font-size: 48px; line-height: 1;">Мяу: <br> <span id="money">0</span></str> <br>
+        <str style="font-size: 20px;">Мяу/сек: <span id="mps">0</span> Мяу</str> <br>
+        <str style="font-size: 20px;">Клик: <span id="mpc">1</span> Мяу</str> <br>
+        <str style="color: #c34f7b; font-weight: bold;">Кошачьи души: <span id="soulsDisplay">0</span> <span id="soulsBonusDisplay">(+0%)</span></str> <br>
+
+                <!-- Прогресс-бар опыта -->
+        <div class="xp-bar-container">
+            <div id="xpBarFill" class="xp-bar-fill"></div>
+        </div>
+
+        </div>
+        
+        <img class="click-button" src="cat-clicker.png" alt="Click me" onclick="clickCookie()">
+        <button id="prestigeBtn" class="prestige-button hidden" onclick="showPrestigeModal()">
+        🌀 Перерождение (+1 Душа)
+        </button>
+    </section>
+
+    <!-- Блок 4: Правая панель (Улучшения) -->
+    <aside class="right-panel">
+        <h2>⚡УЛУЧШЕНИЯ <br> <str style="margin-top: 5px;"><span id="fishDisplay" style="color: #6fb8df; font-weight: bold;">0</span>🐟</str></h2>
+      <button class="shop-button" onclick="buyFishPerLevelBonus()">
+      <p style="font-size: 48px; margin: 0; line-height: 0;">🐟</p>
+      <div>
+      <str class="upg-name">Рыба⬆️</str>
+      <str style="border-bottom: 2px solid var(--border); line-height: 0.25;">&nbsp;</str>
+      <div style="display: grid; justify-content: space-between; grid-template-columns: 1fr 1fr;">
+        <div style="display: flex; flex-direction: column;">
+        <str class="upg-cost"><span id="fishPerLevelCost">1</span>🐟</str>
+        <str class="upg-desc">+1🐟/уровень</str>
+        </div>
+        <str class="upg-total-bonus" id="fishPerLevelTotalBonus">+0 🐟</str>
+      </div>
+      </div>
+    <span class="shop-button-count" id="fishPerLevelCount">0</span>
+    </button>
+
+      <button class="shop-button" onclick="upgradeClickBonus()">
+      <img src="./upg-click.png" alt="Upgrade Click">
+      <div>
+      <str class="upg-name">Мышь⬆️</str>
+      <str style="border-bottom: 2px solid var(--border); line-height: 0.25;">&nbsp;</str>
+      <div style="display: grid; justify-content: space-between; grid-template-columns: 1fr 1fr;">
+        <div style="display: flex; flex-direction: column;">
+        <str class="upg-cost"><span id="clickBonusCost">1</span>🐟</str>
+        <str class="upg-desc">+5% к клику</str>
+        </div>
+        <str class="upg-total-bonus" id="clickBonusTotalBonus">+0%</str>
+      </div>
+      </div>
+    <span class="shop-button-count" id="clickBonusCount">0</span>
+    </button>
+
+    <button class="shop-button" onclick="buyMpsBonus()">
+      <p style="font-size: 48px; margin: 0; line-height: 0;">⌛</p>
+      <div>
+      <str class="upg-name">Мяу/сек⬆️</str>
+      <str style="border-bottom: 2px solid var(--border); line-height: 0.25;">&nbsp;</str>
+      <div style="display: grid; justify-content: space-between; grid-template-columns: 1fr 1fr;">
+        <div style="display: flex; flex-direction: column;">
+        <str class="upg-cost"><span id="mpsBonusCost">1</span>🐟</str>
+        <str class="upg-desc">+5% к Мяу/сек</str>
+        </div>
+        <str class="upg-total-bonus" id="mpsBonusTotalBonus">+0%</str>
+      </div>
+      </div>
+    <span class="shop-button-count" id="mpsBonusCount">0</span>
+    </button>
+
+      <button class="shop-button" onclick="buyXpBonus()">
+      <img src="./upg-xp.png" alt="Upgrade XP">
+      <div>
+      <str class="upg-name">Опыт⬆️</str>
+      <str style="border-bottom: 2px solid var(--border); line-height: 0.25;">&nbsp;</str>
+      <div style="display: grid; justify-content: space-between; grid-template-columns: 1fr 1fr;">
+        <div style="display: flex; flex-direction: column;">
+        <str class="upg-cost"><span id="xpBonusCost">1</span>🐟</str>
+        <str class="upg-desc">+5% к получению опыта</str>
+        </div>
+        <str class="upg-total-bonus" id="xpBonusTotalBonus">+0%</str>
+      </div>
+      </div>
+    <span class="shop-button-count" id="xpBonusCount">0</span>
+    </button>
+
+    <button class="shop-button" onclick="buyCritChanceBonus()">
+      <p style="font-size: 48px; margin: 0; line-height: 0;">💥</p>
+      <div>
+      <str class="upg-name">Крит⬆️</str>
+      <str style="border-bottom: 2px solid var(--border); line-height: 0.25;">&nbsp;</str>
+      <div style="display: grid; justify-content: space-between; grid-template-columns: 1fr 1fr;">
+        <div style="display: flex; flex-direction: column;">
+        <str class="upg-cost"><span id="critChanceCost">1</span>🐟</str>
+        <str class="upg-desc">+1% к шансу крита</str>
+        </div>
+        <str class="upg-total-bonus" id="critChanceTotalBonus">+0%</str>
+      </div>
+      </div>
+    <span class="shop-button-count" id="critChanceCount">0</span>
+    </button>
+
+    </aside>
+</main>
+
+  <!-- Нижняя навигационная панель -->
+  <nav class="mobile-nav">
+    <button class="nav-btn" data-panel="0">
+      <span class="nav-icon">🛒</span>
+      <span class="nav-text">Магазин</span>
+    </button>
+    <button class="nav-btn active" data-panel="1">
+      <span class="nav-icon">🎮</span>
+      <span class="nav-text">Игра</span>
+    </button>
+    <button class="nav-btn" data-panel="2">
+      <span class="nav-icon">⚡</span>
+      <span class="nav-text">Улучшения</span>
+    </button>
+  </nav>
+</div>
+
+    <!-- Кастомное модальное окно подтверждения для сброса -->
+    <div id="resetModal" class="modal-overlay simple-modal hidden">
+      <div class="modal-card">
+        <h3>Сбросить прогресс? 😿</h3>
+        <p>Ты уверен(а), что хочешь удалить все накопленные Мяу и купленные улучшения? Это действие нельзя отменить.</p>
+        <div class="modal-buttons">
+          <button id="confirmNoBtn" class="btn-secondary">Нет, оставить</button>
+          <button id="confirmYesBtn" class="btn-danger">Да, сбросить</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Модальное окно Престижа -->
+    <div id="prestigeModal" class="modal-overlay prestige-modal hidden">
+      <div class="prestige-card">
+        <div style="font-size: 32px;" class="prestige-icon">🌀</div>
+        <h3>Кошачье Перерождение</h3>
+        <p class="prestige-desc">
+          Ты накопил(а) достаточно сил для трансформации!<br>
+          Часть твоего прогресса (Мяу, покупки в магазине типа Мышь, Шарик и т.д. кроме улучшений) сброситься, но ты получишь 
+          <span class="soul-highlight">Кошачьи Души</span>.
+        </p>
+        
+        <div class="prestige-stats">
+          <div class="stat-row">
+            <span>Текущий бонус:</span>
+            <span id="currentBonusDisplay" class="stat-value">0%</span>
+          </div>
+          <div class="stat-row highlight">
+            <span>Бонус после перерождения:</span>
+            <span id="newBonusDisplay" class="stat-value">+10%</span>
+          </div>
+          <div class="stat-row">
+            <span>Требуется Мяу:</span>
+            <span id="prestigeThresholdDisplay" class="stat-value">10k</span>
+          </div>
+        </div>
+
+        <p class="prestige-warning">⚠️ Это действие необратимо!</p>
+
+        <div class="modal-buttons">
+          <button id="prestigeNoBtn" class="btn-secondary">Нет, пока рано</button>
+          <button id="prestigeYesBtn" class="btn-prestige">Да, переродиться!</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="goldenCat" class="golden-cat hidden">
+      <img src="./golden-cat.png" alt="Golden Cat">
+    </div>
+
+    <!-- Виджет таймера бонуса -->
+    <div id="bonusTimerWidget" class="bonus-timer-widget">
+      <svg class="bonus-timer-widget__svg" viewBox="0 0 80 80">
+        <defs>
+          <linearGradient id="goldenGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#ffd700" />
+            <stop offset="100%" style="stop-color:#ffaa00" />
+          </linearGradient>
+        </defs>
+        <circle class="bonus-timer-widget__circle-bg" cx="40" cy="40" r="36"></circle>
+        <circle class="bonus-timer-widget__circle-progress" cx="40" cy="40" r="36" id="bonusProgressCircle"></circle>
+      </svg>
+      <div class="bonus-timer-widget__inner">
+        <span class="bonus-timer-widget__icon">🐱</span>
+      </div>
+    </div>
+
+    <script src="../../script.js" defer></script>
+    <script src="clicker.js" defer></script>
+    <audio id="backgroundMusic" src="../../sounds/music.mp3" loop></audio>
+    <audio id="clickAudio1" src="click-sound1.mp3"></audio>
+    <audio id="clickAudio2" src="click-sound2.mp3"></audio>
+    <audio id="clickAudio3" src="click-sound3.mp3"></audio>
+    <audio id="shopAudio" src="shop-sound.mp3"></audio>
+    <audio id="goldenCatAudio" src="../../sounds/success.mp3"></audio>
+    <audio id="xpAudio" src="xp-sound.mp3"></audio>
+
+  </body>
+</html>

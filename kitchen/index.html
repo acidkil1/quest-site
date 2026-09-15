@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="AcidKil!" />
+    <meta name="theme-color" content="#6fb8df" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Кухня</title>
+    <link rel="icon" href="./favicon.png" type="image/png" />
+    <link rel="stylesheet" href="./styles.css?v=2" />
+  </head>
+
+  <body>
+    <!-- Экран авторизации -->
+    <div class="login-overlay" id="loginOverlay">
+      <div class="login-card">
+        <img src="./img/remi.png" style="width: 200px"></img>
+        <h2>Кухня</h2>
+        <p class="login-subtitle">Выберите, кто вы</p>
+        <div class="login-accounts" id="loginAccounts">
+          <button type="button" class="login-account" data-login="elya">
+            <span class="login-avatar" style="background:#c34f7b">
+              <img src="./img/elya.png" alt="E" onerror="this.style.display='none';this.nextElementSibling.style.display=''" loading="lazy" />
+              <span style="display:none">E</span>
+            </span>
+            <span class="login-name">Эля</span>
+            <span class="login-role">создаёт блюда</span>
+          </button>
+          <button type="button" class="login-account" data-login="sanya">
+            <span class="login-avatar" style="background:#6fb8df">
+              <img src="./img/sanya.png" alt="S" onerror="this.style.display='none';this.nextElementSibling.style.display=''" loading="lazy" />
+              <span style="display:none">S</span>
+            </span>
+            <span class="login-name">Саня</span>
+            <span class="login-role">редактирует всё</span>
+          </button>
+          <button type="button" class="login-account login-account--guest" data-login="guest">
+            <span class="login-avatar" style="background:#2a8a7a">G</span>
+            <span class="login-name">Гость</span>
+            <span class="login-role">только просмотр</span>
+          </button>
+        </div>
+        <div class="login-password hidden" id="loginPasswordBlock">
+          <label class="login-password__label" for="loginPassword">Пароль для «<span id="loginUserName"></span>»</label>
+          <input type="password" id="loginPassword" placeholder="Введи пароль" autocomplete="current-password" />
+          <div class="login-actions">
+            <button type="button" class="kitchen-btn kitchen-btn--accent" id="loginSubmit">Войти</button>
+            <button type="button" class="kitchen-btn" id="loginBack">Назад</button>
+          </div>
+          <p class="msg error hidden" id="loginError">Неверный пароль 🙈</p>
+        </div>
+      </div>
+    </div>
+
+    <main class="app kitchen-app" role="main">
+      <!-- Шапка -->
+      <header class="app__header kitchen-header">
+        <div class="header-content kitchen-header__top">
+          <div class="kitchen-header__title">
+            <h1>Кухня</h1>
+            <p>Домашнее меню для нас двоих</p>
+          </div>
+          <div class="kitchen-header__actions">
+            <div class="session-user" id="sessionUser"></div>
+            <button type="button" class="kitchen-btn kitchen-btn--small favorites-btn hidden" id="favoritesBtn" title="Избранное">
+              ❤️ <span id="favoritesCount" class="favorites-btn__count">0</span>
+            </button>
+            <label class="theme-switch" title="Тема">
+              <input type="checkbox" class="theme-switch__checkbox" id="theme-switch" />
+              <div class="theme-switch__container">
+                <div class="theme-switch__clouds"></div>
+                <div class="theme-switch__stars-container">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 55" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M135.831 3.00688C135.055 3.85027 134.111 4.29946 133 4.35447C134.111 4.40947 135.055 4.85867 135.831 5.71123C136.607 6.55462 136.996 7.56303 136.996 8.72727C136.996 7.95722 137.172 7.25134 137.525 6.59129C137.886 5.93124 138.372 5.39954 138.98 5.00535C139.598 4.60199 140.268 4.39114 141 4.35447C139.88 4.2903 138.936 3.85027 138.16 3.00688C137.384 2.16348 136.996 1.16425 136.996 0C136.996 1.16425 136.607 2.16348 135.831 3.00688Z" fill="currentColor"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M31 23.3545C32.1114 23.2995 33.0551 22.8503 33.8313 22.0069C34.6075 21.1635 34.9956 20.1642 34.9956 19C34.9956 20.1642 35.3837 21.1635 36.1599 22.0069C36.9361 22.8503 37.8798 23.2903 39 23.3545C38.2679 23.3911 37.5976 23.602 36.9802 24.0053C36.3716 24.3995 35.8864 24.9312 35.5248 25.5913C35.172 26.2513 34.9956 26.9572 34.9956 27.7273C34.9956 26.563 34.6075 25.5546 33.8313 24.7112C33.0551 23.8587 32.1114 23.4095 31 23.3545Z" fill="currentColor"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 36.3545C1.11136 36.2995 2.05513 35.8503 2.83131 35.0069C3.6075 34.1635 3.99559 33.1642 3.99559 32C3.99559 33.1642 4.38368 34.1635 5.15987 35.0069C5.93605 35.8503 6.87982 36.2903 8 36.3545C7.26792 36.3911 6.59757 36.602 5.98015 37.0053C5.37155 37.3995 4.88644 37.9312 4.52481 38.5913C4.172 39.2513 3.99559 39.9572 3.99559 40.7273C3.99559 39.563 3.6075 38.5546 2.83131 37.7112C2.05513 36.8587 1.11136 36.4095 0 36.3545Z" fill="currentColor"/>
+                  </svg>
+                </div>
+                <div class="theme-switch__circle-container">
+                  <div class="theme-switch__sun-moon-container">
+                    <div class="theme-switch__moon">
+                      <div class="theme-switch__spot"></div>
+                      <div class="theme-switch__spot"></div>
+                      <div class="theme-switch__spot"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </label>
+          </div>
+        </div>
+      </header>
+
+      <!-- Панель действий -->
+      <section class="kitchen-toolbar">
+        <div class="kitchen-toolbar__row">
+          <input type="text" id="searchInput" class="kitchen-input" placeholder="Поиск блюда..." autocomplete="off" />
+          <button type="button" class="kitchen-btn kitchen-btn--ghost" id="filtersBtn" title="Показать фильтры">
+            ⚙️ Фильтры
+          </button>
+          <button type="button" class="kitchen-btn kitchen-btn--accent" id="randomBtn" title="Случайное блюдо">
+            🎲 Случайное
+          </button>
+          <button type="button" class="kitchen-btn hidden" id="addDishBtn" title="Добавить блюдо">
+            ➕ Блюдо
+          </button>
+        </div>
+        <div class="kitchen-toolbar__row kitchen-filters" id="filtersRow">
+          <select id="filterCategory" class="kitchen-select">
+            <option value="">Все категории</option>
+          </select>
+          <select id="filterGarnish" class="kitchen-select">
+            <option value="">Любой гарнир</option>
+          </select>
+          <select id="filterStatus" class="kitchen-select">
+            <option value="">Все статусы</option>
+          </select>
+          <select id="filterDifficulty" class="kitchen-select">
+            <option value="">Любая сложность</option>
+          </select>
+          <select id="filterTime" class="kitchen-select">
+            <option value="">Любое время</option>
+            <option value="15">До 15 мин</option>
+            <option value="30">До 30 мин</option>
+            <option value="60">До 1 часа</option>
+            <option value="120">До 2 часов</option>
+          </select>
+          <button type="button" class="kitchen-btn kitchen-btn--ghost" id="resetFiltersBtn" title="Сбросить фильтры">
+            ✕ Сбросить
+          </button>
+        </div>
+      </section>
+
+      <!-- Счётчик -->
+      <div class="kitchen-count" id="dishCount"></div>
+
+      <!-- Сетка блюд -->
+      <section class="kitchen-grid" id="dishGrid" aria-label="Список блюд"></section>
+
+      <!-- Пустое состояние -->
+      <div class="kitchen-empty hidden" id="emptyState">
+        <p>😢 Ничего не найдено</p>
+        <p class="kitchen-empty__hint">Попробуйте изменить фильтры или добавить блюдо</p>
+      </div>
+    </main>
+
+    <!-- Плавающая корзина -->
+    <button type="button" class="cart-floating hidden" id="cartFloating" title="Список покупок">
+      🛒<span class="cart-floating__badge" id="cartBadge">0</span>
+    </button>
+
+    <!-- Модалка: детали блюда -->
+    <div class="modal-overlay kitchen-modal" id="dishModal">
+      <div class="kitchen-modal__card">
+        <button type="button" class="kitchen-modal__close" data-close="dishModal" aria-label="Закрыть">✕</button>
+        <div id="dishModalContent"></div>
+      </div>
+    </div>
+
+    <!-- Модалка: случайное блюдо -->
+    <div class="modal-overlay kitchen-modal" id="randomModal">
+      <div class="kitchen-modal__card kitchen-modal__card--wide">
+        <button type="button" class="kitchen-modal__close" data-close="randomModal" aria-label="Закрыть">✕</button>
+        <div id="randomModalContent"></div>
+      </div>
+    </div>
+
+    <!-- Модалка: корзина / список покупок -->
+    <div class="modal-overlay kitchen-modal" id="shoppingModal">
+      <div class="kitchen-modal__card kitchen-modal__card--wide">
+        <button type="button" class="kitchen-modal__close" data-close="shoppingModal" aria-label="Закрыть">✕</button>
+        <div id="shoppingModalContent"></div>
+      </div>
+    </div>
+
+    <!-- Модалка: избранное -->
+    <div class="modal-overlay kitchen-modal" id="favoritesModal">
+      <div class="kitchen-modal__card kitchen-modal__card--wide">
+        <button type="button" class="kitchen-modal__close" data-close="favoritesModal" aria-label="Закрыть">✕</button>
+        <div id="favoritesModalContent"></div>
+      </div>
+    </div>
+
+    <!-- Модалка: добавление / редактирование блюда -->
+    <div class="modal-overlay kitchen-modal" id="editModal">
+      <div class="kitchen-modal__card kitchen-modal__card--wide">
+        <button type="button" class="kitchen-modal__close" data-close="editModal" aria-label="Закрыть">✕</button>
+        <div id="editModalContent"></div>
+      </div>
+    </div>
+
+    <script src="./data.js?v=7" defer></script>
+    <script src="./app.js?v=7" defer></script>
+  </body>
+</html>

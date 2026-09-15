@@ -1,0 +1,17 @@
+# Редирект с http на https создан автоматически при заказе бесплатного ssl-сертификата
+RewriteEngine On
+RewriteCond %{SERVER_PORT} !^443$
+RewriteRule .* https://%{SERVER_NAME}%{REQUEST_URI} [R,L]
+# Конец редиректа
+
+RewriteCond %{THE_REQUEST} \s/(.+)\.html [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]
